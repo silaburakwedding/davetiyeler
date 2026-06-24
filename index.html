@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sıla & Burak — Düğün Davetiyesi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@200;300;400;500;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fcfbfa;
+            color: #2c2c2c;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Giriş Kapak Ekranı */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #faf8f5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            cursor: pointer;
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.2s;
+        }
+
+        #splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .heart-monogram {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 300;
+            font-style: italic;
+            color: #8a7355;
+            margin-bottom: 20px;
+            animation: heartbeat 2.5s infinite ease-in-out;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.03); opacity: 1; }
+        }
+
+        .splash-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            color: #6e655b;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .tap-instruction {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: #a19588;
+            border: 1px solid #e3ded8;
+            padding: 12px 26px;
+            border-radius: 40px;
+            text-transform: uppercase;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Ana İçerik Konteyneri */
+        #main-content {
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 1.8s ease-in-out;
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.96);
+            min-height: 100vh;
+            box-shadow: 0 0 40px rgba(0,0,0,0.02);
+        }
+
+        #main-content.visible {
+            opacity: 1;
+        }
+
+        /* Yumuşak Silik Yazı Belirme Animasyonu */
+        .section {
+            padding: 70px 25px;
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-bottom: 1px solid #f9f7f5;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.4s cubic-bezier(0.25, 1, 0.5, 1), transform 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .section.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-section {
+            height: 100vh;
+            justify-content: space-around;
+        }
+
+        /* Tipografi Ayarları */
+        .title-top {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #8f8274;
+            margin-bottom: 10px;
+        }
+
+        .couple-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.8rem;
+            font-weight: 400;
+            color: #3a332c;
+            margin: 15px 0;
+            line-height: 1.1;
+        }
+        
+        .couple-names span {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-style: italic;
+            color: #9c8870;
+        }
+
+        .invitation-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.7;
+            color: #544e48;
+            max-width: 85%;
+        }
+
+        .scroll-down {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            color: #bfae9e;
+            animation: bounce 2.5s infinite;
+            margin-top: 30px;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+
+        /* Kazı Kazan Bölümü Revizyonları */
+        .scratch-title-top {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 6px;
+            color: #9e9183;
+            text-transform: uppercase;
+            margin-bottom: -5px;
+        }
+
+        .scratch-main-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.4rem;
+            font-style: italic;
+            font-weight: 600;
+            color: #5c1b35;
+            line-height: 1.2;
+            margin-bottom: 25px;
+        }
+
+        .scratch-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            color: #8c8276;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .scratch-container {
+            position: relative;
+            width: 100%;
+            max-width: 340px;
+            height: 160px;
+            margin: 10px auto;
+            background: #faf8f5;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.02);
+        }
+
+        .scratch-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .scratch-content.revealed-text {
+            opacity: 1;
+        }
+
+        .scratch-content .dates {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #3a332c;
+            line-height: 1.5;
+        }
+
+        #scratch-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            cursor: pointer;
+            border-radius: 16px;
+        }
+
+        .scratch-footer-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #8c7e70;
+            margin-top: 25px;
+        }
+
+        /* image_c0585d.png - Bizim Hikayemiz Tasarımı */
+        .story-timeline {
+            position: relative;
+            width: 100%;
+            padding-left: 55px;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .story-timeline::before {
+            content: '';
+            position: absolute;
+            left: 26px;
+            top: 15px;
+            bottom: 15px;
+            width: 2px;
+            border-left: 2px dashed #ebdcd0;
+        }
+
+        .story-node {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .story-node:last-child {
+            margin-bottom: 0;
+        }
+
+        .story-icon-wrapper {
+            position: absolute;
+            left: -55px;
+            top: 12px;
+            width: 44px;
+            height: 44px;
+            background: #ffffff;
+            border: 2px solid #b5a08d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .story-icon-inner {
+            width: 34px;
+            height: 34px;
+            border: 1px solid #ebdcd0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            background: #faf8f5;
+        }
+
+        .story-card {
+            background: #ffffff;
+            border: 1px solid #f0eae1;
+            border-radius: 16px;
+            padding: 20px 24px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+            position: relative;
+        }
+
+        .story-card::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 26px;
+            width: 12px;
+            height: 12px;
+            background: #ffffff;
+            border-left: 1px solid #f0eae1;
+            border-bottom: 1px solid #f0eae1;
+            transform: rotate(45deg);
+        }
+
+        .story-tag {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #c4a47c;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .story-node-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            font-weight: 500;
+            color: #5c1b35;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .story-desc {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-style: italic;
+            color: #7a7065;
+            line-height: 1.5;
+        }
+
+        /* Hikaye Sonu Kalbi */
+        .timeline-end-heart {
+            position: absolute;
+            left: 20px;
+            bottom: -22px;
+            font-size: 11px;
+            color: #a68b70;
+            z-index: 3;
+            background: #ffffff;
+            padding: 2px;
+        }
+
+        /* Geri Sayım Bölümü Revizyonları */
+        .countdown-main-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.6rem;
+            font-style: italic;
+            font-weight: 500;
+            color: #5c1b35;
+            margin-top: -10px;
+            margin-bottom: 30px;
+        }
+
+        .countdown-section-wrapper {
+            width: 100%;
+            margin-bottom: 35px;
+        }
+
+        .countdown-sub-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            font-weight: 600;
+            color: #8a7355;
+            margin-bottom: 10px;
+        }
+
+        .countdown-boxes-custom {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .c-box-custom {
+            background: #ffffff;
+            border: 1px solid #ebdcd0;
+            color: #2c2520;
+            border-radius: 18px;
+            padding: 16px 10px;
+            min-width: 75px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .c-box-custom span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.1rem;
+            font-weight: 600;
+            display: block;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .c-box-custom label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #a39485;
+        }
+
+        .waiting-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #8c7e70;
+            margin-top: 15px;
+        }
+
+        /* Etkinlik Detay Kartları */
+        .event-card {
+            background: #faf8f5;
+            border-radius: 4px;
+            padding: 35px 25px;
+            width: 100%;
+            margin: 20px 0;
+            border: 1px solid #f0eae1;
+        }
+
+        .event-badge {
+            font-family: 'Montserrat', sans-serif;
+            display: inline-block;
+            color: #8a7355;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .event-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c2722;
+            margin-bottom: 8px;
+        }
+
+        .event-time-loc {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #7d7164;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .event-address {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #5c534a;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* Harita Alanları */
+        .map-wrapper {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #eae5dd;
+            padding: 15px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 220px;
+            border: none;
+            border-radius: 2px;
+            margin-bottom: 15px;
+        }
+
+        .direction-button {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #ffffff;
+            background-color: #8a7355;
+            padding: 14px 32px;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .location-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #3a332c;
+            margin-bottom: 12px;
+        }
+
+        /* Sağ Alttaki Sürekli Dönen Dairesel Buton */
+        #rotating-scroll-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 90px;
+            height: 90px;
+            z-index: 999;
+            cursor: pointer;
+            border-radius: 50%;
+            background: #ffffff;
+            box-shadow: 0 8px 25px rgba(138, 115, 85, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.8);
+            transition: opacity 0.5s, visibility 0.5s, transform 0.5s;
+        }
+
+        #rotating-scroll-btn.show {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        #rotating-scroll-btn svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: rotateText 12s linear infinite;
+        }
+
+        @keyframes rotateText {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #rotating-scroll-btn textPath {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9.5px;
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            fill: #8a7355;
+            text-transform: uppercase;
+        }
+
+        .arrow-icon {
+            font-size: 18px;
+            color: #8a7355;
+        }
+
+        /* image_c058fc.png - Özel Süs Çerçeveli Teşekkür Sayfası Tasarımı */
+        .thankyou-frame-container {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #eedec4;
+            padding: 10px;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.02);
+        }
+
+        .thankyou-frame-inner {
+            width: 100%;
+            border: 1px dashed #d5be9b;
+            padding: 45px 20px;
+            position: relative;
+        }
+
+        /* Görseldeki Kıvrımlı Köşe Süslemelerinin CSS Simülasyonu */
+        .thankyou-frame-inner::before, .thankyou-frame-inner::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            pointer-events: none;
+        }
+
+        /* Sol Üst ve Sağ Üst Köşe Süsleri */
+        .thankyou-frame-inner::before {
+            top: 5px; left: 5px;
+            border-top: 2px solid #5c1b35; border-left: 2px solid #5c1b35;
+            border-top-left-radius: 8px;
+            box-shadow: -3px -3px 0 #ffffff;
+        }
+        /* Sağ Üst Köşe için ikinci element veya gölge kullanımı yerine CSS klonlama */
+        .corner-tr {
+            position: absolute; top: 5px; right: 5px;
+            width: 30px; height: 30px;
+            border-top: 2px solid #5c1b35; border-right: 2px solid #5c1b35;
+            border-top-right-radius: 8px;
+        }
+        .corner-bl {
+            position: absolute; bottom: 5px; left: 5px;
+            width: 30px; height: 30px;
+            border-bottom: 2px solid #5c1b35; border-left: 2px solid #5c1b35;
+            border-bottom-left-radius: 8px;
+        }
+        .corner-br {
+            position: absolute; bottom: 5px; right: 5px;
+            width: 30px; height: 30px;
+            border-bottom: 2px solid #5c1b35; border-right: 2px solid #5c1b35;
+            border-bottom-right-radius: 8px;
+        }
+
+        .thank-you-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.2rem;
+            font-style: italic;
+            font-weight: 500;
+            color: #5c1b35;
+            margin-bottom: 0px;
+            line-height: 1.1;
+        }
+
+        .thank-you-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 4px;
+            color: #9e9183;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .thank-you-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-style: italic;
+            line-height: 1.7;
+            color: #7a7065;
+            margin-bottom: 35px;
+        }
+
+        .family-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: #9e9183;
+            text-transform: uppercase;
+            margin-top: 20px;
+        }
+
+        .family-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #5c1b35;
+            margin-top: 3px;
+        }
+
+        .center-heart-separator {
+            font-size: 10px;
+            color: #c4a47c;
+            margin-top: 25px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <!-- GİRİŞ / KAPAK EKRANI -->
+    <div id="splash-screen" onclick="openInvitation()">
+        <div class="heart-monogram">S <span>&</span> B</div>
+        <div class="splash-text">Bu davetiye sana özeldir</div>
+        <div class="tap-instruction">Davetiyeyi Aç</div>
+    </div>
+
+    <!-- Dönen Metin Butonu -->
+    <div id="rotating-scroll-btn" onclick="scrollToTop()">
+        <svg viewBox="0 0 100 100">
+            <path id="circlePath" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none"></path>
+            <text><textPath href="#circlePath" startOffset="0%">Sıla ♥ Burak ♥ Sıla ♥ Burak ♥</textPath></text>
+        </svg>
+        <div class="arrow-icon">▲</div>
+    </div>
+
+    <!-- ANA İÇERİK -->
+    <div id="main-content">
+        
+        <!-- KARŞILAMA VE ANA DAVET SAYFASI -->
+        <div class="section hero-section revealed" id="hero">
+            <div class="title-top">DÜĞÜN TÖRENİMİZE DAVETLİSİNİZ</div>
+            <div class="couple-names">Sıla <span>&</span> Burak</div>
+            <div class="invitation-text">
+                Bu özel günümüzde sizleri de <strong>aramızda görmekten</strong> mutluluk duyarız.
+            </div>
+            <div class="scroll-down" onclick="scrollToProgram()">KAYDIR ▼</div>
+        </div>
+
+        <!-- PROGRAM AKIŞI BÖLÜMÜ -->
+        <div class="section" id="tarihler">
+            <div class="title-top" style="margin-bottom: 20px;">PROGRAM AKIŞI</div>
+            
+            <div class="event-card">
+                <div class="event-badge">KINA</div>
+                <div class="event-date">09 Ağustos 2026</div>
+                <div class="event-time-loc">Pazar — Saat: 20:00</div>
+                <div class="event-address">
+                    İlkim Kır Düğün Bahçesi<br>
+                    İspatcami Mah. Londra Cad. No:73/1 Keşan/Edirne
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-badge">DÜĞÜN</div>
+                <div class="event-date">15 Ağustos 2026</div>
+                <div class="event-time-loc">Cumartesi — Saat: 19:00</div>
+                <div class="event-address">
+                    Koruköy Kır Bahçesi<br>
+                    Körpeşler Mah. Servet Bucurgat Cad. No:2 Merkez/Düzce
+                </div>
+            </div>
+        </div>
+
+        <!-- KAZI KAZAN SAYFASI (YAZIM DÜZELTMELERİ YAPILDI) -->
+        <div class="section" id="kazi-kazan-sayfasi">
+            <div class="scratch-title-top">SÜRPRİZ</div>
+            <div class="scratch-main-title">Tarihi Öğren</div>
+            <div class="scratch-subtitle">TARİHLERİ ÖĞRENMEK İÇİN KAZIYIN</div>
+            
+            <div class="scratch-container">
+                <div class="scratch-content" id="scratch-text-content">
+                    <div class="dates">
+                        <strong style="color: #8a7355;">KINA:</strong> 09 Ağustos 2026<br>
+                        <strong style="color: #8a7355;">DÜĞÜN:</strong> 15 Ağustos 2026
+                    </div>
+                </div>
+                <canvas id="scratch-canvas"></canvas>
+            </div>
+            
+            <div class="scratch-footer-text">✨ Parmağınla kazıyarak keşfet ✨</div>
+        </div>
+
+        <!-- YENİ BÖLÜM: BİZİM HİKAYEMİZ SAYFASI (image_c0585d.png REPLİKASI) -->
+        <div class="section" id="bizim-hikayemiz">
+            <div class="scratch-title-top">BİZİM</div>
+            <div class="scratch-main-title" style="margin-bottom: 35px;">Hikayemiz</div>
+            
+            <div class="story-timeline">
+                <!-- 1. Düğüm -->
+                <div class="story-node">
+                    <div class="story-icon-wrapper"><div class="story-icon-inner">✨</div></div>
+                    <div class="story-card">
+                        <div class="story-tag">İLK KARŞILAŞMA</div>
+                        <div class="story-node-title">Yollarımız Kesişti</div>
+                        <div class="story-desc">Bir bakış, bir gülümseme... ve her şey o an başladı.</div>
+                    </div>
+                </div>
+
+                <!-- 2. Düğüm -->
+                <div class="story-node">
+                    <div class="story-icon-wrapper"><div class="story-icon-inner">☕</div></div>
+                    <div class="story-card">
+                        <div class="story-tag">İLK BULUŞMA</div>
+                        <div class="story-node-title">Saatler Su Gibi Aktı</div>
+                        <div class="story-desc">Konuştukça anladık ki bu hikaye uzun sürecekti.</div>
+                    </div>
+                </div>
+
+                <!-- 3. Düğüm -->
+                <div class="story-node">
+                    <div class="story-icon-wrapper"><div class="story-icon-inner">💍</div></div>
+                    <div class="story-card">
+                        <div class="story-tag">EVLİLİK TEKLİFİ</div>
+                        <div class="story-node-title">"Evet" Dedi</div>
+                        <div class="story-desc">Kalp çarpıntısıyla sorulan soruya, gözyaşlarıyla gelen cevap.</div>
+                    </div>
+                </div>
+
+                <!-- 4. Düğüm -->
+                <div class="story-node">
+                    <div class="story-icon-wrapper"><div class="story-icon-inner">♥</div></div>
+                    <div class="story-card">
+                        <div class="story-tag">15 AĞUSTOS 2026</div>
+                        <div class="story-node-title">Sonsuza Dek</div>
+                        <div class="story-desc">Ve şimdi en güzel bölüm başlıyor — sizinle birlikte.</div>
+                    </div>
+                </div>
+
+                <!-- Çizelge Sonu Kalbi -->
+                <div class="timeline-end-heart">♥</div>
+            </div>
+        </div>
+
+        <!-- ADRES TARİFLERİ -->
+        <div class="section" id="adres-tarifleri">
+            <div class="title-top" style="margin-bottom: 20px;">ADRES TARİFLERİ</div>
+
+            <div class="map-wrapper">
+                <div class="event-badge" style="margin-bottom: 5px;">KEŞAN'DAKİ DÜĞÜN İÇİN</div>
+                <div class="location-title">İlkim Kır Düğün Bahçesi</div>
+                <iframe class="map-container" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.876110820984!2d26.619010000000002!3d40.85261!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b397e59b2075fb%3A0xc6bf849ba85fa1b6!2zxLBsa2ltIEvEsXIgRMO8xJ_DvG4gQmFow6dlc2k!5e0!3m2!1str!2str!4v1710000000000!5m2!1str!2str" allowfullscreen="" loading="lazy"></iframe>
+                <a href="https://maps.app.goo.gl/dn9BBc6B9y4D4C448" target="_blank" class="direction-button">YOL TARİFİ</a>
+            </div>
+
+            <div class="map-wrapper">
+                <div class="event-badge" style="margin-bottom: 5px;">DÜZCE'DEKİ DÜĞÜN İÇİN</div>
+                <div class="location-title">Koruköy Kır Bahçesi</div>
+                <iframe class="map-container" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3015.654160359051!2d31.171887399999998!3d40.8795553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x409dac0a0b5993df%3A0x8992ce5ef69223e7!2zS29ydWvDtnkgS8EsciBCYWhyZXNp!5e0!3m2!1str!2str!4v1710000000001!5m2!1str!2str" allowfullscreen="" loading="lazy"></iframe>
+                <a href="https://maps.app.goo.gl/UYHjK2JQCeAGbYSN8" target="_blank" class="direction-button">YOL TARİFİ</a>
+            </div>
+        </div>
+
+        <!-- GERİ SAYIM BÖLÜMÜ (İKİLİ DİNAMİK SAYAÇ SİSTEMİ) -->
+        <div class="section" id="sayaclar">
+            <div class="title-top" style="letter-spacing: 5px; color: #9e9183; margin-bottom: 5px;">O ÖZEL GÜNLERE KALAN SÜRE</div>
+            <div class="countdown-main-title">Geri Sayım</div>
+
+            <!-- 1. Sayaç: Kına Gecesi -->
+            <div class="countdown-section-wrapper">
+                <div class="countdown-sub-label">Kına Gecesine Kalan Süre</div>
+                <div class="countdown-boxes-custom" id="kina-timer">
+                    <div class="c-box-custom"><span id="k-gun">00</span><label>Gün</label></div>
+                    <div class="c-box-custom"><span id="k-saat">00</span><label>Saat</label></div>
+                    <div class="c-box-custom"><span id="k-dak">00</span><label>Dakika</label></div>
+                    <div class="c-box-custom"><span id="k-sn">00</span><label>Saniye</label></div>
+                </div>
+            </div>
+
+            <!-- 2. Sayaç: Düğün Töreni -->
+            <div class="countdown-section-wrapper">
+                <div class="countdown-sub-label">Düğün Törenine Kalan Süre</div>
+                <div class="countdown-boxes-custom" id="dugun-timer">
+                    <div class="c-box-custom"><span id="d-gun">00</span><label>Gün</label></div>
+                    <div class="c-box-custom"><span id="d-saat">00</span><label>Saat</label></div>
+                    <div class="c-box-custom"><span id="d-dak">00</span><label>Dakika</label></div>
+                    <div class="c-box-custom"><span id="d-sn">00</span><label>Saniye</label></div>
+                </div>
+            </div>
+
+            <div class="waiting-text">Sabırsızlıkla bekliyoruz...</div>
+        </div>
+
+        <!-- TEŞEKKÜR SAYFASI (image_c058fc.png ÖZEL ÇERÇEVE REPLİKASI) -->
+        <div class="section" id="kapanis">
+            <div class="thankyou-frame-container">
+                <div class="thankyou-frame-inner">
+                    <!-- Köşe Kıvrım Sabitleyicileri -->
+                    <div class="corner-tr"></div>
+                    <div class="corner-bl"></div>
+                    <div class="corner-br"></div>
+
+                    <div class="thank-you-title">Teşekkürler</div>
+                    <div class="thank-you-subtitle">SEVGİLERİMİZLE</div>
+
+                    <div class="thank-you-text">
+                        Bu özel günde bizimle olduğunuz için teşekkür ederiz.<br>
+                        Varlığınız bizim için en büyük hediye.
+                    </div>
+                    
+                    <div class="couple-names" style="font-size: 2.8rem; margin: 10px 0; color: #5c1b35;">Sıla <span>&</span> Burak</div>
+
+                    <div class="family-title">GELİN TARAFI</div>
+                    <div class="family-names">Sibel & Birol</div>
+
+                    <div class="family-title">DAMAT TARAFI</div>
+                    <div class="family-names">Hatice & Yüksel</div>
+                    
+                    <div class="center-heart-separator">♥</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let confettiInterval;
+
+        function openInvitation() {
+            document.getElementById('splash-screen').classList.add('hidden');
+            document.getElementById('main-content').classList.add('visible');
+            
+            confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 }, colors: ['#8a7355', '#b59a79', '#5c1b35'] });
+            
+            confettiInterval = setInterval(() => {
+                confetti({
+                    particleCount: 1,
+                    startVelocity: 0,
+                    ticks: 200,
+                    origin: {
+                        x: Math.random(),
+                        y: Math.random() - 0.2
+                    },
+                    colors: ['#8a7355', '#b59a79', '#ebdcd0'],
+                    gravity: 0.4,
+                    scalar: 0.6,
+                    drift: Math.random() - 0.5
+                });
+            }, 150);
+
+            setTimeout(() => {
+                document.getElementById('hero').classList.add('revealed');
+                initScratchCard();
+            }, 200);
+        }
+
+        function scrollToProgram() {
+            document.getElementById('tarihler').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Scroll Element Revelator
+        const sections = document.querySelectorAll('.section');
+        const rotatingBtn = document.getElementById('rotating-scroll-btn');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, { root: null, threshold: 0.08 });
+
+        sections.forEach(section => observer.observe(section));
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                rotatingBtn.classList.add('show');
+            } else {
+                rotatingBtn.classList.remove('show');
+            }
+        });
+
+        // HTML5 Canvas Scratch Card System
+        function initScratchCard() {
+            const canvas = document.getElementById('scratch-canvas');
+            const ctx = canvas.getContext('2d');
+            const container = canvas.parentElement;
+            
+            canvas.width = container.clientWidth;
+            canvas.height = container.clientHeight;
+            
+            const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            grad.addColorStop(0, '#e5c060');
+            grad.addColorStop(0.5, '#f3e0aa');
+            grad.addColorStop(1, '#c99e32');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.font = "italic 600 18px 'Montserrat'";
+            ctx.fillStyle = "rgba(92, 27, 53, 0.5)";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText("✨ Kazıyın ✨", canvas.width / 2, canvas.height / 2);
+            
+            let isDrawing = false;
+            
+            function scratch(e) {
+                if (!isDrawing) return;
+                const rect = canvas.getBoundingClientRect();
+                const x = (e.clientX || e.touches[0].clientX) - rect.left;
+                const y = (e.clientY || e.touches[0].clientY) - rect.top;
+                
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.beginPath();
+                ctx.arc(x, y, 25, 0, Math.PI * 2);
+                ctx.fill();
+                
+                checkScratchPercentage();
+            }
+            
+            function checkScratchPercentage() {
+                const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                let clearedPixels = 0;
+                for (let i = 3; i < imgData.data.length; i += 4) {
+                    if (imgData.data[i] === 0) clearedPixels++;
+                }
+                if (clearedPixels / (canvas.width * canvas.height) > 0.08) {
+                    canvas.style.transition = "opacity 0.6s ease";
+                    canvas.style.opacity = "0";
+                    document.getElementById('scratch-text-content').classList.add('revealed-text');
+                    setTimeout(() => canvas.remove(), 600);
+                }
+            }
+            
+            canvas.addEventListener('mousedown', () => isDrawing = true);
+            canvas.addEventListener('mousemove', scratch);
+            canvas.addEventListener('mouseup', () => isDrawing = false);
+            canvas.addEventListener('touchstart', () => isDrawing = true);
+            canvas.addEventListener('touchmove', scratch);
+            canvas.addEventListener('touchend', () => isDrawing = false);
+        }
+
+        // İkili Dinamik Sayaç Algoritması
+        const kinaTarihi = new Date("Aug 9, 2026 20:00:00").getTime();
+        const dugunTarihi = new Date("Aug 15, 2026 19:00:00").getTime();
+
+        function sayacGuncelle() {
+            const simdi = new Date().getTime();
+            
+            // Kına Sayacı Hesaplama
+            const kinaKalan = kinaTarihi - simdi;
+            if (kinaKalan > 0) {
+                document.getElementById("k-gun").innerText = Math.floor(kinaKalan / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                document.getElementById("k-saat").innerText = Math.floor((kinaKalan % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById("k-dak").innerText = Math.floor((kinaKalan % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById("k-sn").innerText = Math.floor((kinaKalan % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            } else {
+                document.getElementById("kina-timer").innerHTML = "<div style='color:#5c1b35; font-style:italic; font-family:Cormorant Garamond, serif; font-size:1.3rem; margin: 10px 0;'>Kına Gecesi Gerçekleşti!</div>";
+            }
+
+            // Düğün Sayacı Hesaplama
+            const dugunKalan = dugunTarihi - simdi;
+            if (dugunKalan > 0) {
+                document.getElementById("d-gun").innerText = Math.floor(dugunKalan / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                document.getElementById("d-saat").innerText = Math.floor((dugunKalan % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById("d-dak").innerText = Math.floor((dugunKalan % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById("d-sn").innerText = Math.floor((dugunKalan % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            } else {
+                document.getElementById("dugun-timer").innerHTML = "<div style='color:#5c1b35; font-style:italic; font-family:Cormorant Garamond, serif; font-size:1.3rem; margin: 10px 0;'>Düğün Törenimiz Gerçekleşti!</div>";
+            }
+        }
+
+        setInterval(sayacGuncelle, 1000);
+        sayacGuncelle();
+    </script>
+</body>
+</html>
