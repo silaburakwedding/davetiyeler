@@ -17,8 +17,8 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #fcfbfa;
-            color: #2c2c2c;
+            background-color: #f8f5f9;
+            color: #2c252d;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
@@ -30,7 +30,9 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: #faf8f5;
+            background: linear-gradient(135deg, #f3edf8, #e8daf0, #dfc6eb, #f5eefb);
+            background-size: 400% 400%;
+            animation: gradientMove 8s ease infinite;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -40,6 +42,12 @@
             transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.2s;
         }
 
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         #splash-screen.hidden {
             opacity: 0;
             visibility: hidden;
@@ -47,25 +55,26 @@
 
         .heart-monogram {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 4.5rem;
+            font-size: 4.8rem;
             font-weight: 300;
             font-style: italic;
-            color: #8a7355;
+            color: #6b4375;
             margin-bottom: 20px;
-            animation: heartbeat 2.5s infinite ease-in-out;
+            animation: mainHeartbeat 2.5s infinite ease-in-out;
+            text-shadow: 0 4px 15px rgba(107, 67, 117, 0.1);
         }
 
-        @keyframes heartbeat {
+        @keyframes mainHeartbeat {
             0%, 100% { transform: scale(1); opacity: 0.9; }
-            50% { transform: scale(1.03); opacity: 1; }
+            50% { transform: scale(1.04); opacity: 1; }
         }
 
         .splash-text {
             font-family: 'Montserrat', sans-serif;
             font-size: 0.8rem;
-            font-weight: 400;
-            letter-spacing: 4px;
-            color: #6e655b;
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: #523b57;
             margin-bottom: 40px;
             text-transform: uppercase;
         }
@@ -73,19 +82,21 @@
         .tap-instruction {
             font-family: 'Montserrat', sans-serif;
             font-size: 0.75rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            color: #a19588;
-            border: 1px solid #e3ded8;
-            padding: 12px 26px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            color: #ffffff;
+            background: #7b5286;
+            border: 1px solid #7b5286;
+            padding: 14px 30px;
             border-radius: 40px;
             text-transform: uppercase;
+            box-shadow: 0 6px 20px rgba(123, 82, 134, 0.25);
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
         }
 
         /* Ana İçerik Konteyneri */
@@ -96,9 +107,9 @@
             transition: opacity 1.8s ease-in-out;
             max-width: 500px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.96);
+            background: rgba(255, 255, 255, 0.97);
             min-height: 100vh;
-            box-shadow: 0 0 40px rgba(0,0,0,0.02);
+            box-shadow: 0 0 50px rgba(92, 27, 53, 0.04);
         }
 
         #main-content.visible {
@@ -114,7 +125,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            border-bottom: 1px solid #f9f7f5;
+            border-bottom: 1px solid #f4eef7;
             opacity: 0;
             transform: translateY(40px);
             transition: opacity 1.4s cubic-bezier(0.25, 1, 0.5, 1), transform 1.4s cubic-bezier(0.25, 1, 0.5, 1);
@@ -134,18 +145,18 @@
         .title-top {
             font-family: 'Montserrat', sans-serif;
             font-size: 0.75rem;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 5px;
             text-transform: uppercase;
-            color: #8f8274;
+            color: #896b91;
             margin-bottom: 10px;
         }
 
         .couple-names {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 3.8rem;
+            font-size: 4rem;
             font-weight: 400;
-            color: #3a332c;
+            color: #402347;
             margin: 15px 0;
             line-height: 1.1;
         }
@@ -154,25 +165,25 @@
             font-family: 'Cormorant Garamond', serif;
             font-weight: 300;
             font-style: italic;
-            color: #9c8870;
+            color: #926fa1;
         }
 
         .invitation-text {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             font-weight: 400;
             font-style: italic;
             line-height: 1.7;
-            color: #544e48;
+            color: #534357;
             max-width: 85%;
         }
 
         .scroll-down {
             font-family: 'Montserrat', sans-serif;
             font-size: 0.7rem;
-            font-weight: 400;
+            font-weight: 500;
             letter-spacing: 4px;
-            color: #bfae9e;
+            color: #b19bb7;
             animation: bounce 2.5s infinite;
             margin-top: 30px;
             cursor: pointer;
@@ -184,13 +195,86 @@
             60% { transform: translateY(-4px); }
         }
 
-        /* Kazı Kazan Bölümü Revizyonları */
+        /* image_3e3c42.png Replika Takvim Kutucuğu */
+        .custom-calendar-box {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #f3edf8;
+            border-radius: 24px;
+            padding: 20px 15px;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(123, 82, 134, 0.02);
+        }
+
+        .custom-cal-month {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #402347;
+            margin-bottom: 15px;
+        }
+
+        .custom-cal-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            color: #9e9183;
+            margin-bottom: 10px;
+        }
+
+        .custom-cal-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            color: #725a78;
+            align-items: center;
+        }
+
+        .custom-cal-day-item {
+            position: relative;
+            padding: 5px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+        }
+
+        /* Sürekli Dinamik Kalp Atışı Animasyonu (Düğün Günleri İçin) */
+        .custom-cal-day-item.active-heart {
+            color: #ffffff;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .custom-cal-day-item.active-heart::before {
+            content: '';
+            position: absolute;
+            width: 38px;
+            height: 38px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235c1b35'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") no-repeat center;
+            background-size: contain;
+            z-index: -1;
+            animation: dynamicHeartbeat 1.2s infinite ease-in-out;
+        }
+
+        @keyframes dynamicHeartbeat {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.14); }
+            60% { transform: scale(1); }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Sürpriz Kazı-Kazan Alanı */
         .scratch-title-top {
             font-family: 'Montserrat', sans-serif;
             font-size: 0.85rem;
-            font-weight: 300;
+            font-weight: 400;
             letter-spacing: 6px;
-            color: #9e9183;
+            color: #896b91;
             text-transform: uppercase;
             margin-bottom: -5px;
         }
@@ -208,9 +292,9 @@
         .scratch-subtitle {
             font-family: 'Montserrat', sans-serif;
             font-size: 0.75rem;
-            font-weight: 400;
+            font-weight: 500;
             letter-spacing: 4px;
-            color: #8c8276;
+            color: #725a78;
             text-transform: uppercase;
             margin-bottom: 20px;
         }
@@ -221,7 +305,7 @@
             max-width: 340px;
             height: 160px;
             margin: 10px auto;
-            background: #faf8f5;
+            background: #faf4fc;
             border-radius: 16px;
             overflow: hidden;
             box-shadow: inset 0 0 15px rgba(0,0,0,0.02);
@@ -250,7 +334,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.25rem;
             font-weight: 600;
-            color: #3a332c;
+            color: #402347;
             line-height: 1.5;
         }
 
@@ -269,11 +353,11 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.3rem;
             font-style: italic;
-            color: #8c7e70;
+            color: #725a78;
             margin-top: 25px;
         }
 
-        /* image_c0585d.png - Bizim Hikayemiz Tasarımı */
+        /* Bizim Hikayemiz Tasarımı */
         .story-timeline {
             position: relative;
             width: 100%;
@@ -289,16 +373,12 @@
             top: 15px;
             bottom: 15px;
             width: 2px;
-            border-left: 2px dashed #ebdcd0;
+            border-left: 2px dashed #dfcae6;
         }
 
         .story-node {
             position: relative;
             margin-bottom: 30px;
-        }
-
-        .story-node:last-child {
-            margin-bottom: 0;
         }
 
         .story-icon-wrapper {
@@ -308,33 +388,31 @@
             width: 44px;
             height: 44px;
             background: #ffffff;
-            border: 2px solid #b5a08d;
+            border: 2px solid #a482b0;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 2;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
         }
 
         .story-icon-inner {
             width: 34px;
             height: 34px;
-            border: 1px solid #ebdcd0;
+            border: 1px solid #f2eaf7;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 14px;
-            background: #faf8f5;
+            background: #fbf8fd;
         }
 
         .story-card {
             background: #ffffff;
-            border: 1px solid #f0eae1;
+            border: 1px solid #eee5f2;
             border-radius: 16px;
             padding: 20px 24px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.01);
             position: relative;
         }
 
@@ -346,8 +424,8 @@
             width: 12px;
             height: 12px;
             background: #ffffff;
-            border-left: 1px solid #f0eae1;
-            border-bottom: 1px solid #f0eae1;
+            border-left: 1px solid #eee5f2;
+            border-bottom: 1px solid #eee5f2;
             transform: rotate(45deg);
         }
 
@@ -356,7 +434,7 @@
             font-size: 0.65rem;
             font-weight: 700;
             letter-spacing: 3px;
-            color: #c4a47c;
+            color: #a482b0;
             text-transform: uppercase;
             margin-bottom: 4px;
         }
@@ -375,23 +453,22 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.15rem;
             font-style: italic;
-            color: #7a7065;
+            color: #645369;
             line-height: 1.5;
         }
 
-        /* Hikaye Sonu Kalbi */
         .timeline-end-heart {
             position: absolute;
-            left: 20px;
+            left: 21px;
             bottom: -22px;
             font-size: 11px;
-            color: #a68b70;
+            color: #a482b0;
             z-index: 3;
             background: #ffffff;
             padding: 2px;
         }
 
-        /* Geri Sayım Bölümü Revizyonları */
+        /* Geri Sayım Tasarımı */
         .countdown-main-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 3.6rem;
@@ -412,7 +489,7 @@
             font-size: 1.6rem;
             font-style: italic;
             font-weight: 600;
-            color: #8a7355;
+            color: #7b5286;
             margin-bottom: 10px;
         }
 
@@ -426,11 +503,11 @@
         .c-box-custom {
             background: #ffffff;
             border: 1px solid #ebdcd0;
-            color: #2c2520;
+            color: #402347;
             border-radius: 18px;
             padding: 16px 10px;
             min-width: 75px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 12px rgba(123,82,134,0.03);
         }
 
         .c-box-custom span {
@@ -448,31 +525,31 @@
             font-weight: 500;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #a39485;
+            color: #927599;
         }
 
         .waiting-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.4rem;
             font-style: italic;
-            color: #8c7e70;
+            color: #725a78;
             margin-top: 15px;
         }
 
         /* Etkinlik Detay Kartları */
         .event-card {
-            background: #faf8f5;
+            background: #fbf8fd;
             border-radius: 4px;
             padding: 35px 25px;
             width: 100%;
             margin: 20px 0;
-            border: 1px solid #f0eae1;
+            border: 1px solid #eee5f2;
         }
 
         .event-badge {
             font-family: 'Montserrat', sans-serif;
             display: inline-block;
-            color: #8a7355;
+            color: #7b5286;
             font-weight: 600;
             font-size: 0.8rem;
             letter-spacing: 3px;
@@ -484,7 +561,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8rem;
             font-weight: 600;
-            color: #2c2722;
+            color: #402347;
             margin-bottom: 8px;
         }
 
@@ -493,7 +570,7 @@
             font-size: 0.8rem;
             font-weight: 500;
             letter-spacing: 1px;
-            color: #7d7164;
+            color: #725a78;
             margin-bottom: 15px;
             text-transform: uppercase;
         }
@@ -502,16 +579,16 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.2rem;
             font-style: italic;
-            color: #5c534a;
+            color: #534357;
             line-height: 1.6;
             margin-bottom: 15px;
         }
 
-        /* Harita Alanları */
+        /* Harita Alanı */
         .map-wrapper {
             width: 100%;
             background: #ffffff;
-            border: 1px solid #eae5dd;
+            border: 1px solid #eee5f2;
             padding: 15px;
             margin-top: 20px;
             margin-bottom: 30px;
@@ -534,7 +611,7 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             color: #ffffff;
-            background-color: #8a7355;
+            background-color: #7b5286;
             padding: 14px 32px;
             border-radius: 2px;
             text-decoration: none;
@@ -545,11 +622,68 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.5rem;
             font-weight: 600;
-            color: #3a332c;
+            color: #402347;
             margin-bottom: 12px;
         }
 
-        /* Sağ Alttaki Sürekli Dönen Dairesel Buton */
+        /* Hava Durumu */
+        .weather-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .weather-row-top {
+            width: 100%;
+        }
+
+        .weather-row-bottom {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .weather-card {
+            background: #fbf8fd;
+            border: 1px solid #eee5f2;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .weather-card.today-card {
+            background: #f5eefb;
+            border: 1px solid #dfc6eb;
+        }
+
+        .weather-city {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #7b5286;
+            text-transform: uppercase;
+        }
+
+        .weather-temp {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin: 3px 0;
+            color: #402347;
+        }
+
+        .weather-desc {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: #725a78;
+        }
+
+        /* Sağ Alttaki Sürekli Dönen Buton */
         #rotating-scroll-btn {
             position: fixed;
             bottom: 30px;
@@ -560,7 +694,7 @@
             cursor: pointer;
             border-radius: 50%;
             background: #ffffff;
-            box-shadow: 0 8px 25px rgba(138, 115, 85, 0.2);
+            box-shadow: 0 8px 25px rgba(123, 82, 134, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -591,70 +725,74 @@
         #rotating-scroll-btn textPath {
             font-family: 'Montserrat', sans-serif;
             font-size: 9.5px;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 2.5px;
-            fill: #8a7355;
+            fill: #7b5286;
             text-transform: uppercase;
         }
 
         .arrow-icon {
             font-size: 18px;
-            color: #8a7355;
+            color: #7b5286;
         }
 
-        /* image_c058fc.png - Özel Süs Çerçeveli Teşekkür Sayfası Tasarımı */
+        #music-toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 1px solid #eee5f2;
+            box-shadow: 0 4px 12px rgba(123, 82, 134, 0.15);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+            color: #7b5286;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        #music-toggle-btn.visible-btn {
+            opacity: 1;
+        }
+
+        /* Teşekkür Çerçevesi */
         .thankyou-frame-container {
             width: 100%;
             background: #ffffff;
-            border: 1px solid #eedec4;
+            border: 1px solid #e1d3e6;
             padding: 10px;
             border-radius: 8px;
             position: relative;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.02);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.01);
         }
 
         .thankyou-frame-inner {
             width: 100%;
-            border: 1px dashed #d5be9b;
-            padding: 45px 20px;
+            border: 1px dashed #c1adc7;
+            padding: 55px 24px;
             position: relative;
         }
 
-        /* Görseldeki Kıvrımlı Köşe Süslemelerinin CSS Simülasyonu */
-        .thankyou-frame-inner::before, .thankyou-frame-inner::after {
+        .thankyou-frame-inner::before {
             content: '';
             position: absolute;
             width: 30px;
             height: 30px;
             pointer-events: none;
-        }
-
-        /* Sol Üst ve Sağ Üst Köşe Süsleri */
-        .thankyou-frame-inner::before {
             top: 5px; left: 5px;
             border-top: 2px solid #5c1b35; border-left: 2px solid #5c1b35;
             border-top-left-radius: 8px;
-            box-shadow: -3px -3px 0 #ffffff;
         }
-        /* Sağ Üst Köşe için ikinci element veya gölge kullanımı yerine CSS klonlama */
-        .corner-tr {
-            position: absolute; top: 5px; right: 5px;
-            width: 30px; height: 30px;
-            border-top: 2px solid #5c1b35; border-right: 2px solid #5c1b35;
-            border-top-right-radius: 8px;
-        }
-        .corner-bl {
-            position: absolute; bottom: 5px; left: 5px;
-            width: 30px; height: 30px;
-            border-bottom: 2px solid #5c1b35; border-left: 2px solid #5c1b35;
-            border-bottom-left-radius: 8px;
-        }
-        .corner-br {
-            position: absolute; bottom: 5px; right: 5px;
-            width: 30px; height: 30px;
-            border-bottom: 2px solid #5c1b35; border-right: 2px solid #5c1b35;
-            border-bottom-right-radius: 8px;
-        }
+        
+        .corner-tr { position: absolute; top: 5px; right: 5px; width: 30px; height: 30px; border-top: 2px solid #5c1b35; border-right: 2px solid #5c1b35; border-top-right-radius: 8px; }
+        .corner-bl { position: absolute; bottom: 5px; left: 5px; width: 30px; height: 30px; border-bottom: 2px solid #5c1b35; border-left: 2px solid #5c1b35; border-bottom-left-radius: 8px; }
+        .corner-br { position: absolute; bottom: 5px; right: 5px; width: 30px; height: 30px; border-bottom: 2px solid #5c1b35; border-right: 2px solid #5c1b35; border-bottom-right-radius: 8px; }
 
         .thank-you-title {
             font-family: 'Cormorant Garamond', serif;
@@ -662,50 +800,32 @@
             font-style: italic;
             font-weight: 500;
             color: #5c1b35;
-            margin-bottom: 0px;
             line-height: 1.1;
         }
 
         .thank-you-subtitle {
             font-family: 'Montserrat', sans-serif;
             font-size: 0.7rem;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 4px;
-            color: #9e9183;
+            color: #896b91;
             text-transform: uppercase;
             margin-bottom: 30px;
         }
 
-        .thank-you-text {
+        .memorable-quote {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.25rem;
+            font-size: 1.45rem;
             font-style: italic;
-            line-height: 1.7;
-            color: #7a7065;
-            margin-bottom: 35px;
-        }
-
-        .family-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 500;
-            letter-spacing: 2px;
-            color: #9e9183;
-            text-transform: uppercase;
-            margin-top: 20px;
-        }
-
-        .family-names {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            font-style: italic;
-            color: #5c1b35;
-            margin-top: 3px;
+            line-height: 1.8;
+            color: #4a364e;
+            margin: 30px auto;
+            max-width: 90%;
         }
 
         .center-heart-separator {
-            font-size: 10px;
-            color: #c4a47c;
+            font-size: 11px;
+            color: #a482b0;
             margin-top: 25px;
         }
     </style>
@@ -720,7 +840,10 @@
         <div class="tap-instruction">Davetiyeyi Aç</div>
     </div>
 
-    <!-- Dönen Metin Butonu -->
+    <!-- Ambiance İkonu -->
+    <div id="music-toggle-btn" onclick="this.innerHTML = this.innerHTML === '🎵' ? '🔇' : '🎵'">🎵</div>
+
+    <!-- Dönen Lila Metin Butonu -->
     <div id="rotating-scroll-btn" onclick="scrollToTop()">
         <svg viewBox="0 0 100 100">
             <path id="circlePath" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none"></path>
@@ -742,10 +865,11 @@
             <div class="scroll-down" onclick="scrollToProgram()">KAYDIR ▼</div>
         </div>
 
-        <!-- PROGRAM AKIŞI BÖLÜMÜ -->
+        <!-- PROGRAM AKIŞI BÖLÜMÜ (image_3e3c42.png REPLİKA TAKVİMLERİ EKLENDİ) -->
         <div class="section" id="tarihler">
             <div class="title-top" style="margin-bottom: 20px;">PROGRAM AKIŞI</div>
             
+            <!-- Kına Alanı -->
             <div class="event-card">
                 <div class="event-badge">KINA</div>
                 <div class="event-date">09 Ağustos 2026</div>
@@ -754,8 +878,20 @@
                     İlkim Kır Düğün Bahçesi<br>
                     İspatcami Mah. Londra Cad. No:73/1 Keşan/Edirne
                 </div>
+
+                <!-- image_3e3c42.png Uyumlu Kına Takvim Kutucuğu -->
+                <div class="custom-calendar-box">
+                    <div class="custom-cal-month">Ağustos</div>
+                    <div class="custom-cal-weekdays">
+                        <div>Pzt</div><div>Sal</div><div>Çar</div><div>Per</div><div>Cum</div><div>Cts</div><div>Pzr</div>
+                    </div>
+                    <div class="custom-cal-days">
+                        <div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div class="custom-cal-day-item active-heart">9</div>
+                    </div>
+                </div>
             </div>
 
+            <!-- Düğün Alanı -->
             <div class="event-card">
                 <div class="event-badge">DÜĞÜN</div>
                 <div class="event-date">15 Ağustos 2026</div>
@@ -764,10 +900,21 @@
                     Koruköy Kır Bahçesi<br>
                     Körpeşler Mah. Servet Bucurgat Cad. No:2 Merkez/Düzce
                 </div>
+
+                <!-- image_3e3c42.png Uyumlu Düğün Takvim Kutucuğu -->
+                <div class="custom-calendar-box">
+                    <div class="custom-cal-month">Ağustos</div>
+                    <div class="custom-cal-weekdays">
+                        <div>Pzt</div><div>Sal</div><div>Çar</div><div>Per</div><div>Cum</div><div>Cts</div><div>Pzr</div>
+                    </div>
+                    <div class="custom-cal-days">
+                        <div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div class="custom-cal-day-item active-heart">15</div><div>16</div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- KAZI KAZAN SAYFASI (YAZIM DÜZELTMELERİ YAPILDI) -->
+        <!-- KAZI KAZAN SAYFASI (PATLAMA EFEKTİ SCRIPT'E BAĞLANDI) -->
         <div class="section" id="kazi-kazan-sayfasi">
             <div class="scratch-title-top">SÜRPRİZ</div>
             <div class="scratch-main-title">Tarihi Öğren</div>
@@ -776,8 +923,8 @@
             <div class="scratch-container">
                 <div class="scratch-content" id="scratch-text-content">
                     <div class="dates">
-                        <strong style="color: #8a7355;">KINA:</strong> 09 Ağustos 2026<br>
-                        <strong style="color: #8a7355;">DÜĞÜN:</strong> 15 Ağustos 2026
+                        <strong style="color: #7b5286;">KINA:</strong> 09 Ağustos 2026<br>
+                        <strong style="color: #7b5286;">DÜĞÜN:</strong> 15 Ağustos 2026
                     </div>
                 </div>
                 <canvas id="scratch-canvas"></canvas>
@@ -786,13 +933,12 @@
             <div class="scratch-footer-text">✨ Parmağınla kazıyarak keşfet ✨</div>
         </div>
 
-        <!-- YENİ BÖLÜM: BİZİM HİKAYEMİZ SAYFASI (image_c0585d.png REPLİKASI) -->
+        <!-- BİZIM HİKAYEMİZ SAYFASI (TARİH 9 AĞUSTOS OLARAK DÜZELTİLDİ) -->
         <div class="section" id="bizim-hikayemiz">
             <div class="scratch-title-top">BİZİM</div>
             <div class="scratch-main-title" style="margin-bottom: 35px;">Hikayemiz</div>
             
             <div class="story-timeline">
-                <!-- 1. Düğüm -->
                 <div class="story-node">
                     <div class="story-icon-wrapper"><div class="story-icon-inner">✨</div></div>
                     <div class="story-card">
@@ -802,7 +948,6 @@
                     </div>
                 </div>
 
-                <!-- 2. Düğüm -->
                 <div class="story-node">
                     <div class="story-icon-wrapper"><div class="story-icon-inner">☕</div></div>
                     <div class="story-card">
@@ -812,7 +957,6 @@
                     </div>
                 </div>
 
-                <!-- 3. Düğüm -->
                 <div class="story-node">
                     <div class="story-icon-wrapper"><div class="story-icon-inner">💍</div></div>
                     <div class="story-card">
@@ -822,17 +966,15 @@
                     </div>
                 </div>
 
-                <!-- 4. Düğüm -->
                 <div class="story-node">
                     <div class="story-icon-wrapper"><div class="story-icon-inner">♥</div></div>
                     <div class="story-card">
-                        <div class="story-tag">15 AĞUSTOS 2026</div>
+                        <div class="story-tag">09 AĞUSTOS 2026</div>
                         <div class="story-node-title">Sonsuza Dek</div>
                         <div class="story-desc">Ve şimdi en güzel bölüm başlıyor — sizinle birlikte.</div>
                     </div>
                 </div>
 
-                <!-- Çizelge Sonu Kalbi -->
                 <div class="timeline-end-heart">♥</div>
             </div>
         </div>
@@ -856,12 +998,11 @@
             </div>
         </div>
 
-        <!-- GERİ SAYIM BÖLÜMÜ (İKİLİ DİNAMİK SAYAÇ SİSTEMİ) -->
+        <!-- GERİ SAYIM & ÜÇLÜ HAVA DURUMU -->
         <div class="section" id="sayaclar">
-            <div class="title-top" style="letter-spacing: 5px; color: #9e9183; margin-bottom: 5px;">O ÖZEL GÜNLERE KALAN SÜRE</div>
+            <div class="title-top" style="letter-spacing: 5px; color: #896b91; margin-bottom: 5px;">O ÖZEL GÜNLERE KALAN SÜRE</div>
             <div class="countdown-main-title">Geri Sayım</div>
 
-            <!-- 1. Sayaç: Kına Gecesi -->
             <div class="countdown-section-wrapper">
                 <div class="countdown-sub-label">Kına Gecesine Kalan Süre</div>
                 <div class="countdown-boxes-custom" id="kina-timer">
@@ -872,7 +1013,6 @@
                 </div>
             </div>
 
-            <!-- 2. Sayaç: Düğün Töreni -->
             <div class="countdown-section-wrapper">
                 <div class="countdown-sub-label">Düğün Törenine Kalan Süre</div>
                 <div class="countdown-boxes-custom" id="dugun-timer">
@@ -884,13 +1024,35 @@
             </div>
 
             <div class="waiting-text">Sabırsızlıkla bekliyoruz...</div>
+
+            <div class="title-top" style="margin-top:40px; margin-bottom: 15px;">Hava Durumu Tahmini</div>
+            <div class="weather-container">
+                <div class="weather-row-top">
+                    <div class="weather-card today-card">
+                        <div class="weather-city">✨ BUGÜNÜN HAVA DURUMU ✨</div>
+                        <div class="weather-temp">26°C</div>
+                        <div class="weather-desc">⛅ Güzel Bir Gün</div>
+                    </div>
+                </div>
+                <div class="weather-row-bottom">
+                    <div class="weather-card" style="width: 50%;">
+                        <div class="weather-city">Keşan (Kına)</div>
+                        <div class="weather-temp">29°C</div>
+                        <div class="weather-desc">☀️ Az Bulutlu</div>
+                    </div>
+                    <div class="weather-card" style="width: 50%;">
+                        <div class="weather-city">Düzce (Düğün)</div>
+                        <div class="weather-temp">27°C</div>
+                        <div class="weather-desc">☀️ Güneşli</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- TEŞEKKÜR SAYFASI (image_c058fc.png ÖZEL ÇERÇEVE REPLİKASI) -->
+        <!-- TEŞEKKÜR SAYFASI -->
         <div class="section" id="kapanis">
             <div class="thankyou-frame-container">
                 <div class="thankyou-frame-inner">
-                    <!-- Köşe Kıvrım Sabitleyicileri -->
                     <div class="corner-tr"></div>
                     <div class="corner-bl"></div>
                     <div class="corner-br"></div>
@@ -898,18 +1060,11 @@
                     <div class="thank-you-title">Teşekkürler</div>
                     <div class="thank-you-subtitle">SEVGİLERİMİZLE</div>
 
-                    <div class="thank-you-text">
-                        Bu özel günde bizimle olduğunuz için teşekkür ederiz.<br>
-                        Varlığınız bizim için en büyük hediye.
+                    <div class="memorable-quote">
+                        "Bazı hikayeler zamansızdır... Hayatımızın en özel sayfasını birlikte imzalamak, sevginin en güzel halini sizinle paylaşmak için sabırsızlanıyoruz."
                     </div>
                     
-                    <div class="couple-names" style="font-size: 2.8rem; margin: 10px 0; color: #5c1b35;">Sıla <span>&</span> Burak</div>
-
-                    <div class="family-title">GELİN TARAFI</div>
-                    <div class="family-names">Sibel & Birol</div>
-
-                    <div class="family-title">DAMAT TARAFI</div>
-                    <div class="family-names">Hatice & Yüksel</div>
+                    <div class="couple-names" style="font-size: 3.2rem; margin: 15px 0; color: #5c1b35;">Sıla <span>&</span> Burak</div>
                     
                     <div class="center-heart-separator">♥</div>
                 </div>
@@ -924,8 +1079,9 @@
         function openInvitation() {
             document.getElementById('splash-screen').classList.add('hidden');
             document.getElementById('main-content').classList.add('visible');
+            document.getElementById('music-toggle-btn').classList.add('visible-btn');
             
-            confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 }, colors: ['#8a7355', '#b59a79', '#5c1b35'] });
+            confetti({ particleCount: 110, spread: 80, origin: { y: 0.6 }, colors: ['#7b5286', '#b19bb7', '#5c1b35', '#dfc6eb'] });
             
             confettiInterval = setInterval(() => {
                 confetti({
@@ -936,12 +1092,12 @@
                         x: Math.random(),
                         y: Math.random() - 0.2
                     },
-                    colors: ['#8a7355', '#b59a79', '#ebdcd0'],
-                    gravity: 0.4,
+                    colors: ['#7b5286', '#b19bb7', '#dfc6eb'],
+                    gravity: 0.35,
                     scalar: 0.6,
                     drift: Math.random() - 0.5
                 });
-            }, 150);
+            }, 140);
 
             setTimeout(() => {
                 document.getElementById('hero').classList.add('revealed');
@@ -957,7 +1113,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Scroll Element Revelator
+        // Scroll Observer
         const sections = document.querySelectorAll('.section');
         const rotatingBtn = document.getElementById('rotating-scroll-btn');
         
@@ -979,7 +1135,7 @@
             }
         });
 
-        // HTML5 Canvas Scratch Card System
+        // Canvas Scratch Card
         function initScratchCard() {
             const canvas = document.getElementById('scratch-canvas');
             const ctx = canvas.getContext('2d');
@@ -989,14 +1145,14 @@
             canvas.height = container.clientHeight;
             
             const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-            grad.addColorStop(0, '#e5c060');
-            grad.addColorStop(0.5, '#f3e0aa');
-            grad.addColorStop(1, '#c99e32');
+            grad.addColorStop(0, '#b19bb7');
+            grad.addColorStop(0.5, '#e8daf0');
+            grad.addColorStop(1, '#7b5286');
             ctx.fillStyle = grad;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
             ctx.font = "italic 600 18px 'Montserrat'";
-            ctx.fillStyle = "rgba(92, 27, 53, 0.5)";
+            ctx.fillStyle = "#ffffff";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             ctx.fillText("✨ Kazıyın ✨", canvas.width / 2, canvas.height / 2);
@@ -1027,6 +1183,15 @@
                     canvas.style.transition = "opacity 0.6s ease";
                     canvas.style.opacity = "0";
                     document.getElementById('scratch-text-content').classList.add('revealed-text');
+                    
+                    // İstediğiniz Renkli Konfeti Patlama Efekti (Tarihler açılınca)
+                    confetti({
+                        particleCount: 70,
+                        spread: 60,
+                        origin: { y: 0.6 },
+                        colors: ['#7b5286', '#5c1b35', '#dfc6eb', '#e8daf0']
+                    });
+
                     setTimeout(() => canvas.remove(), 600);
                 }
             }
@@ -1039,14 +1204,14 @@
             canvas.addEventListener('touchend', () => isDrawing = false);
         }
 
-        // İkili Dinamik Sayaç Algoritması
+        // Sayaç Hesaplamaları
         const kinaTarihi = new Date("Aug 9, 2026 20:00:00").getTime();
         const dugunTarihi = new Date("Aug 15, 2026 19:00:00").getTime();
 
         function sayacGuncelle() {
             const simdi = new Date().getTime();
             
-            // Kına Sayacı Hesaplama
+            // Kına
             const kinaKalan = kinaTarihi - simdi;
             if (kinaKalan > 0) {
                 document.getElementById("k-gun").innerText = Math.floor(kinaKalan / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
@@ -1057,7 +1222,7 @@
                 document.getElementById("kina-timer").innerHTML = "<div style='color:#5c1b35; font-style:italic; font-family:Cormorant Garamond, serif; font-size:1.3rem; margin: 10px 0;'>Kına Gecesi Gerçekleşti!</div>";
             }
 
-            // Düğün Sayacı Hesaplama
+            // Düğün
             const dugunKalan = dugunTarihi - simdi;
             if (dugunKalan > 0) {
                 document.getElementById("d-gun").innerText = Math.floor(dugunKalan / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
